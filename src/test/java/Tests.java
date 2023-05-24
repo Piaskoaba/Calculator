@@ -5,19 +5,20 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
 import org.openqa.selenium.support.FindBy;
+import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.security.Provider;
 import java.util.concurrent.TimeUnit;
 
 public class Tests {
     @FindBy(id = "com.google.android.apps.messaging:id/start_new_conversation_button")
     MobileElement button11;
     protected static AndroidDriver driver;
-    DesktopPanel desktopPanel;
 
     @BeforeMethod
     public void runMessage() throws MalformedURLException {
@@ -28,15 +29,18 @@ public class Tests {
         cap.setCapability("appActivity", "com.android.calculator2.Calculator");
         driver = new AndroidDriver<MobileElement>(new URL("http://127.0.0.1:4723/wd/hub"), cap);
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        ServiceClass serviceClass = new ServiceClass(driver);
     }
 
     @Test
-    public void additionTest() throws InterruptedException {
-
+    public void additionTest() {
         DesktopPanel desktopPanel = new DesktopPanel(driver);
-        desktopPanel.clickButtonOne();
+        ServiceClass serviceClass = new ServiceClass(driver);
+        Assert.assertTrue(desktopPanel.isFormulaFieldVisible(), "formula field is not visible");
+        desktopPanel.clickRandomNumber(serviceClass.randomNumber());
         desktopPanel.clickButtonPlus();
-
+        desktopPanel.clickButtonFive();
+        desktopPanel.clickEqualButton();
+        System.out.println("Result equals: " + desktopPanel.resultIs());
     }
-
 }
