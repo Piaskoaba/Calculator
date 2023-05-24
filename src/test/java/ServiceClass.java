@@ -16,10 +16,8 @@ public class ServiceClass {
         PageFactory.initElements(new AppiumFieldDecorator(driver), this);
     }
 
-    Random random;
-
     public int randomNumber() {
-        int random_int = (int)Math.floor(Math.random() * (9 - 0+ 1) + 0);
+        int random_int = (int) Math.floor(Math.random() * (9 - 0 + 1) + 0);
         return random_int;
     }
 }

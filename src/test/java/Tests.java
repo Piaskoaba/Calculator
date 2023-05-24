@@ -16,8 +16,6 @@ import java.security.Provider;
 import java.util.concurrent.TimeUnit;
 
 public class Tests {
-    @FindBy(id = "com.google.android.apps.messaging:id/start_new_conversation_button")
-    MobileElement button11;
     protected static AndroidDriver driver;
 
     @BeforeMethod
@@ -29,17 +27,15 @@ public class Tests {
         cap.setCapability("appActivity", "com.android.calculator2.Calculator");
         driver = new AndroidDriver<MobileElement>(new URL("http://127.0.0.1:4723/wd/hub"), cap);
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-        ServiceClass serviceClass = new ServiceClass(driver);
     }
-
     @Test
-    public void additionTest() {
+    public void additionTest() throws InterruptedException {
         DesktopPanel desktopPanel = new DesktopPanel(driver);
         ServiceClass serviceClass = new ServiceClass(driver);
         Assert.assertTrue(desktopPanel.isFormulaFieldVisible(), "formula field is not visible");
         desktopPanel.clickRandomNumber(serviceClass.randomNumber());
         desktopPanel.clickButtonPlus();
-        desktopPanel.clickButtonFive();
+        desktopPanel.clickRandomNumber(serviceClass.randomNumber());
         desktopPanel.clickEqualButton();
         System.out.println("Result equals: " + desktopPanel.resultIs());
     }

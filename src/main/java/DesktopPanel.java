@@ -147,9 +147,9 @@ public class DesktopPanel extends BasePage {
         return random.nextInt(9 - 0 + 1) + 0;
     }
 
-    public MobileElement clickRandomNumber(int yourNumber) {
-
+    public MobileElement clickRandomNumber(int yourNumber) throws InterruptedException {
         MobileElement element = (MobileElement) driver.findElementById("com.android.calculator2:id/digit_" + yourNumber);
+        wait.until(ExpectedConditions.elementToBeClickable(element));
         element.click();
         return element;
 
