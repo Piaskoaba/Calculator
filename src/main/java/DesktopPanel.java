@@ -1,6 +1,5 @@
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.android.AndroidDriver;
-import org.openqa.selenium.By;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Wait;
@@ -143,16 +142,42 @@ public class DesktopPanel extends BasePage {
         return resultField.getText();
     }
 
-    public int randomNumberOnCalculatorBoard() {
-        return random.nextInt(9 - 0 + 1) + 0;
-    }
-
-    public MobileElement clickRandomNumber(int yourNumber) throws InterruptedException {
+    public MobileElement clickRandomNumber(int yourNumber){
         MobileElement element = (MobileElement) driver.findElementById("com.android.calculator2:id/digit_" + yourNumber);
         wait.until(ExpectedConditions.elementToBeClickable(element));
         element.click();
         return element;
+    }
+
+    public void actionOnCalculator(char operator) {
+
+        switch (operator) {
+
+            case '+':
+                plusButton.click();
+                System.out.println("Your action is addition");
+                break;
+
+            case '-':
+                subtractionButton.click();
+                System.out.println(" Your action is subtraction");
+                break;
+
+            case '/':
+                divisionButton.click();
+                System.out.println("Your action is division");
+                break;
+
+            case '*':
+                multiplicationButton.click();
+                System.out.println("Your action is multiplication");
+                break;
+
+            default:
+                System.out.println(" Incorrect action ");
+        }
 
     }
 
 }
+

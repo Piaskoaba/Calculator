@@ -1,18 +1,12 @@
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.remote.MobileCapabilityType;
-import org.openqa.selenium.By;
 import org.openqa.selenium.remote.DesiredCapabilities;
-
-import org.openqa.selenium.support.FindBy;
 import org.testng.Assert;
-import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.security.Provider;
 import java.util.concurrent.TimeUnit;
 
 public class Tests {
@@ -29,12 +23,12 @@ public class Tests {
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
     }
     @Test
-    public void additionTest() throws InterruptedException {
+    public void mathOperation(){
         DesktopPanel desktopPanel = new DesktopPanel(driver);
         ServiceClass serviceClass = new ServiceClass(driver);
-        Assert.assertTrue(desktopPanel.isFormulaFieldVisible(), "formula field is not visible");
+        Assert.assertTrue(desktopPanel.isFormulaFieldVisible(), "Formula field is not visible");
         desktopPanel.clickRandomNumber(serviceClass.randomNumber());
-        desktopPanel.clickButtonPlus();
+        desktopPanel.actionOnCalculator('*');
         desktopPanel.clickRandomNumber(serviceClass.randomNumber());
         desktopPanel.clickEqualButton();
         System.out.println("Result equals: " + desktopPanel.resultIs());
