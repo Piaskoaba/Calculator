@@ -53,6 +53,21 @@ public class DesktopPanel extends BasePage {
         super(driver);
     }
 
+    @Override
+    MobileElement clickRandomNumber(String yourNumber) {
+        MobileElement element = (MobileElement) driver.findElementById("com.android.calculator2:id/digit_" + yourNumber);
+        wait.until(ExpectedConditions.elementToBeClickable(element));
+        element.click();
+        return element;
+    }
+    @Override
+    MobileElement clickRandomNumber(int yourNumber) {
+        MobileElement element = (MobileElement) driver.findElementById("com.android.calculator2:id/digit_" + yourNumber);
+        wait.until(ExpectedConditions.elementToBeClickable(element));
+        element.click();
+        return element;
+    }
+
     public void clickButtonOne() {
         wait.until(ExpectedConditions.elementToBeClickable(buttonOne));
         buttonOne.click();
@@ -141,14 +156,6 @@ public class DesktopPanel extends BasePage {
         wait.until(ExpectedConditions.visibilityOf(resultField));
         return resultField.getText();
     }
-
-    public MobileElement clickRandomNumber(int yourNumber){
-        MobileElement element = (MobileElement) driver.findElementById("com.android.calculator2:id/digit_" + yourNumber);
-        wait.until(ExpectedConditions.elementToBeClickable(element));
-        element.click();
-        return element;
-    }
-
     public void actionOnCalculator(char operator) {
 
         switch (operator) {

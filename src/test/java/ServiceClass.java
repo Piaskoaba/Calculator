@@ -20,4 +20,8 @@ public class ServiceClass {
         int random_int = (int) Math.floor(Math.random() * (9 - 0 + 1) + 0);
         return random_int;
     }
+    public String valueOfRandomNumber(){
+        String randomNumber = String.valueOf(randomNumber());
+        return  randomNumber;
+    }
 }

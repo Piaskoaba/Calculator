@@ -27,7 +27,7 @@ public class Tests {
         DesktopPanel desktopPanel = new DesktopPanel(driver);
         ServiceClass serviceClass = new ServiceClass(driver);
         Assert.assertTrue(desktopPanel.isFormulaFieldVisible(), "Formula field is not visible");
-        desktopPanel.clickRandomNumber(serviceClass.randomNumber());
+        desktopPanel.clickRandomNumber(serviceClass.valueOfRandomNumber());
         desktopPanel.actionOnCalculator('*');
         desktopPanel.clickRandomNumber(serviceClass.randomNumber());
         desktopPanel.clickEqualButton();
