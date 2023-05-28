@@ -53,16 +53,16 @@ public class DesktopPanel extends BasePage {
         super(driver);
     }
 
-    @Override
+
     MobileElement clickRandomNumber(String yourNumber) {
         MobileElement element = (MobileElement) driver.findElementById("com.android.calculator2:id/digit_" + yourNumber);
         wait.until(ExpectedConditions.elementToBeClickable(element));
         element.click();
         return element;
     }
-    @Override
-    MobileElement clickRandomNumber(int yourNumber) {
-        MobileElement element = (MobileElement) driver.findElementById("com.android.calculator2:id/digit_" + yourNumber);
+
+    MobileElement clickRandomNumber(int yourNumberInInt) {
+        MobileElement element = (MobileElement) driver.findElementById("com.android.calculator2:id/digit_" + yourNumberInInt);
         wait.until(ExpectedConditions.elementToBeClickable(element));
         element.click();
         return element;
